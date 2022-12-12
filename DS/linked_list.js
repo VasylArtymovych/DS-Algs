@@ -19,6 +19,17 @@ class LinkedList {
     return this.length;
   }
 
+  prepend(value) {
+    const newNode = new Node(value, this.head);
+    this.head = newNode;
+    this.length += 1;
+
+    if (!this.tail) {
+      this.tail = newNode;
+    }
+    return this;
+  }
+
   append(value) {
     const newNode = new Node(value);
     if (!this.head) {
@@ -30,17 +41,6 @@ class LinkedList {
     this.tail.next = newNode;
     this.tail = newNode;
     this.length += 1;
-    return this;
-  }
-
-  prepend(value) {
-    const newNode = new Node(value, this.head);
-    this.head = newNode;
-    this.length += 1;
-
-    if (!this.tail) {
-      this.tail = newNode;
-    }
     return this;
   }
 
@@ -125,11 +125,12 @@ class LinkedList {
 const ll = new LinkedList();
 ll.append('A1').append('A2').append('A3');
 ll.prepend('B1').prepend('B2');
-console.log('deleted', ll.delete('A3'));
-console.log(JSON.stringify(ll));
-console.log('finded', ll.find('A2'));
-console.log(ll.toArray());
-console.log(ll.toString());
+// console.log('deleted', ll.delete('A3'));
+// console.log(JSON.stringify(ll));
+// console.log('finded', ll.find('A2'));
+// console.log(ll.toArray());
+// console.log(ll.toString());
+
 // display all ll nodes:
 // let temp = ll.head;
 // while (temp) {
@@ -148,15 +149,23 @@ class LinkedList2 {
     return this.length;
   }
 
+  prepend(value) {
+    const newNode = new Node(value, this.head);
+    this.head = newNode;
+    this.length += 1;
+    return this;
+  }
+
   append(value) {
     const newNode = new Node(value);
-    if (!this.head) {
+
+    if (this.head === null) {
       this.head = newNode;
       this.length += 1;
       return this;
     } else {
       let lastNode = this.head;
-      while (lastNode.next) {
+      while (lastNode.next !== null) {
         lastNode = lastNode.next;
       }
       lastNode.next = newNode;
@@ -165,10 +174,15 @@ class LinkedList2 {
     }
   }
 
-  prepend(value) {
-    this.head = new Node(value, this.head);
-    this.length += 1;
-    return this;
+  find(value) {
+    let temp = this.head;
+    while (temp !== null) {
+      if (temp.data === value) {
+        return true;
+      }
+      temp = temp.next;
+    }
+    return false;
   }
 
   delete(value) {
@@ -202,5 +216,6 @@ class LinkedList2 {
 const ll2 = new LinkedList2();
 ll2.append('A1').append('A2');
 ll2.prepend('B1').prepend('B2');
+// console.log(ll2.find('B2'));
 // console.log(ll2.delete('A2').toString());
-// console.log(JSON.stringify(ll2));
+console.log(JSON.stringify(ll2));
