@@ -5,15 +5,12 @@ function insertElInArrOnPos(arr, el, position) {
   for (let i = arr.length; i > position; i--) {
     arr[i] = arr[i - 1];
   }
-
   arr[position] = el;
-
   return arr;
 }
 // Time complexity: On
-// console.log(insertElInArrOnPos(array, 33, 3));
+console.log(insertElInArrOnPos(array, 33, 3));
 // ======================================================================================
-
 // find an element in array and return its position, otherwise return -1
 
 function findElInArr(arr, el) {
@@ -44,7 +41,6 @@ function removeElInArr(arr, el) {
   }
 
   arr.length -= 1;
-
   return arr;
 }
 // Time complexity: On
