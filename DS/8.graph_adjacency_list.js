@@ -101,8 +101,8 @@ const udgAddEdge = (src, dest) => {
 };
 const prinUdGraph = () => {
   for (let i = 0; i < V; i += 1) {
-    let temp = adjList2[i];
     document.write('adjList[' + i + ']->');
+    let temp = adjList2[i];
     while (temp !== null) {
       document.write(temp.data + '->');
       temp = temp.next;

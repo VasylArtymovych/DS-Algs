@@ -1,3 +1,7 @@
+//Theory:
+// Dense Graph - is a graph with max posible edges, E = |V|ˆ2
+// Sparse Graph - is a graph where edges is close to min posible edges, E = |V|
+
 // number of vertexes:
 const V = 5;
 
@@ -44,9 +48,7 @@ addEdge(adjMatrix, 2, 3);
 addEdge(adjMatrix, 3, 4);
 
 console.log(adjMatrix);
-
 printAdjMatrix(adjMatrix);
-
 console.log(hasEdge(adjMatrix, 1, 2));
 
 //  un-directed graph adjacenty matrix:
