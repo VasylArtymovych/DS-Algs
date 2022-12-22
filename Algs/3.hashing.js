@@ -1,4 +1,4 @@
-class HashTable {
+class Hashing {
   constructor(capacity) {
     this.store = new Array(capacity);
     this.size = capacity;
@@ -42,13 +42,13 @@ class HashTable {
   }
 }
 
-const ht = new HashTable(7);
-console.log(ht);
-ht.add('ab', 11);
-ht.add('a', 12);
-ht.add('ac', 22);
-ht.add('ad', 33);
-console.log(ht.get('ad'));
-console.log(ht.get('a'));
-console.log(ht.delete('ad'));
-console.log(ht.delete('a'));
+const ht = new Hashing(7);
+// console.log(ht);
+// ht.add('ab', 11);
+// ht.add('a', 12);
+// ht.add('ac', 22);
+// ht.add('ad', 33);
+// console.log(ht.get('ad'));
+// console.log(ht.get('a'));
+// console.log(ht.delete('ad'));
+// console.log(ht.delete('a'));

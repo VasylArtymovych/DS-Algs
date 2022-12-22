@@ -52,7 +52,6 @@ function clone(target, obj) {
     } else if (descriptor.value instanceof Array) {
       target[key] = clone([], descriptor.value);
     } else if (descriptor.value instanceof Date) {
-      console.log('date', descriptor.value);
       target[key] = new Date(descriptor.value);
     } else if (descriptor.value instanceof Object) {
       let prototype = Object.getPrototypeOf(descriptor.value);
