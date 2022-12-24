@@ -94,25 +94,96 @@ var htc = new HashTableChaining(5);
 
 // Implement hash table with linear probing - Insert:________________________-
 const hTable = new Array(5).fill(-1);
+
 const insert = (value) => {
   const key = value % hTable.length;
   let index = key;
 
   while (hTable[index] !== -1) {
     index = (index + 1) % hTable.length;
+
     if (index === key) {
-      return console.log('hTable is full!');
+      console.log('hTable is full!');
+      return 0;
     }
   }
 
   hTable[index] = value;
+  return 1;
+};
+// Implement hash table with linear probing - remove:________________________-
+const remove = (value) => {
+  let key = value % hTable.length;
+  let index = key;
+
+  while (hTable[index] !== value) {
+    index = (index + 1) % hTable.length;
+
+    if (key === index) {
+      return 0;
+    }
+  }
+
+  hTable[index] = -1;
+  return 1;
+};
+// Implement hash table with linear probing - search:________________________-
+const search = (value) => {
+  const key = value % hTable.length;
+  let index = key;
+
+  while (hTable[index] !== value) {
+    index = (index + 1) % hTable.length;
+
+    if (key === index) {
+      return 0;
+    }
+  }
+
+  return 1;
 };
 
-insert(1);
-insert(2);
-insert(3);
-insert(4);
-insert(5);
-insert(1);
+// insert(1);
+// insert(1);
+// insert(1);
+// insert(1);
+// insert(5);
+// insert(1);
+// remove(3);
+// remove(5);
+// remove(2);
+// console.log(search(5));
+// console.log(search(4));
+// console.log(search(44));
+// console.log('hTable', hTable);
 
-console.log('hTable', hTable);
+// Implement hash table with quadratic probing - Insert:________________________
+// Algoritm is f(x) = (x + iˆ2) % size;
+// const ht = new Array(5).fill(-1);
+// const insertQP = (value) => {
+//   const key = value % ht.length;
+//   let index = key;
+//   let i = 1;
+//   while (ht[index] !== -1) {
+//     index = (key + Math.pow(i, 2)) % ht.length;
+//     console.log('index', index, i);
+//     i += 1;
+// insertQP(1);    if (key === index) {
+//       console.log('ht is full');
+//       return 0;
+//     }
+//   }
+
+//   ht[index] = value;
+//   return 1;
+// };
+
+// insertQP(1);
+// insertQP(1);
+// insertQP(1);
+
+// insertQP(1);
+// insertQP(1);
+// insertQP(1);
+
+console.log(ht);
