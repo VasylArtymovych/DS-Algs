@@ -159,31 +159,31 @@ const search = (value) => {
 
 // Implement hash table with quadratic probing - Insert:________________________
 // Algoritm is f(x) = (x + iˆ2) % size;
-// const ht = new Array(5).fill(-1);
-// const insertQP = (value) => {
-//   const key = value % ht.length;
-//   let index = key;
-//   let i = 1;
-//   while (ht[index] !== -1) {
-//     index = (key + Math.pow(i, 2)) % ht.length;
-//     console.log('index', index, i);
-//     i += 1;
-// insertQP(1);    if (key === index) {
-//       console.log('ht is full');
-//       return 0;
-//     }
-//   }
+const ht = new Array(5).fill(-1);
+const insertQP = (value) => {
+  const key = value % ht.length;
+  let index = key;
+  let i = 1;
+  while (ht[index] !== -1) {
+    index = (key + Math.pow(i, 2)) % ht.length;
+    console.log('index', index, i);
+    i += 1;
+    if (key === index) {
+      console.log('ht is full', i);
+      return 0;
+    }
+  }
 
-//   ht[index] = value;
-//   return 1;
-// };
+  ht[index] = value;
+  return 1;
+};
 
-// insertQP(1);
-// insertQP(1);
-// insertQP(1);
+insertQP(1);
+insertQP(1);
+insertQP(1);
 
-// insertQP(1);
-// insertQP(1);
-// insertQP(1);
+insertQP(1);
+insertQP(1);
+insertQP(1);
 
 console.log(ht);
