@@ -68,7 +68,8 @@ function clone(target, obj) {
 }
 
 // option 4 Browser API:
-const apiClone = structuredClone(objForCopy);
+// const apiClone = structuredClone(objForCopy);
+
 //results:
 const copy1 = deepObjCopy(objForCopy);
 const copy2 = deepClone(objForCopy);
