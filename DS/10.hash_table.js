@@ -6,11 +6,11 @@ class HashTable {
   }
 
   hash(key) {
-    let sum = 0;
-    for (let i = 0; i < key.length; i++) {
-      sum += key.charCodeAt(i);
-    }
-    return sum % this.size;
+    let hash = Array.from(key).reduce((hashAcc, char) => {
+      return hashAcc + char.charCodeAt(0);
+    }, 0);
+
+    return hash % this.size;
   }
 
   add(key, value) {
@@ -43,7 +43,7 @@ class HashTable {
   }
 }
 
-// const ht = new HashTable(7);
+const ht = new HashTable(7);
 // console.log(ht);
 // ht.add('ab', 11);
 // ht.add('a', 12);
@@ -53,7 +53,9 @@ class HashTable {
 // console.log(ht.get('a'));
 // console.log(ht.delete('ad'));
 // console.log(ht.delete('a'));
-
+ht.hash('ab');
+ht.hash('ba');
+ht.hash('abc');
 // Implementation using Linked List: ______________________________________________________
 class Node {
   constructor(value) {
