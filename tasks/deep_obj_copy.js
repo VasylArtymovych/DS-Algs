@@ -19,7 +19,7 @@ function deepObjCopy(obj) {
     if (Array.isArray(obj[key])) {
       newObj[key] = [...obj[key]];
     } else if (key instanceof Object) {
-      newObj[key] = deepClone(obj[key]);
+      newObj[key] = deepObjCopy(obj[key]);
     } else {
       newObj[key] = obj[key];
     }
