@@ -1,5 +1,4 @@
-/// DEEP OBJECT COP: recursive!
-
+//todo Deep object copy with all nested properties:
 const objForCopy = {
   a: 5,
   b: { g: 8, y: 9, t: { q: [48, 47] } },
@@ -11,7 +10,7 @@ const objForCopy = {
   },
   r: { h: 9, a: 'test', s: 'test2' },
 };
-
+// recursive options:
 // option 1:
 function deepObjCopy(obj) {
   const newObj = {};
@@ -67,7 +66,7 @@ function clone(target, obj) {
   return target;
 }
 
-// option 4 Browser API:
+//* option 4 Browser API:
 // const apiClone = structuredClone(objForCopy);
 
 //results:
