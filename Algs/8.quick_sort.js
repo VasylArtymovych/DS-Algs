@@ -26,7 +26,7 @@ const quick_sort = (arr) => {
 // console.log(quick_sort(array), 'itrn', count);
 // console.log(quick_sort(array2), 'itrn', count);
 
-// todo quiq sort implementation by finding the sorted pivot element in array, recursivly:
+// todo quick sort implementation by finding the sorted pivot element in array, recursivly:
 // find sorted position for pivot element:
 const partition = (arr, start, end) => {
   var pIndex = start;
@@ -43,17 +43,15 @@ const partition = (arr, start, end) => {
   return pIndex;
 };
 
-console.log(partition(array, 0, array.length - 1));
-// ! not completed
 const quickSort = (arr, start, end) => {
-  if (arr.length < 2 || end < 0 || start > arr.length - 1) {
-    return;
+  if (start < end) {
+    let pIndex = partition(arr, start, end);
+    quickSort(arr, start, pIndex - 1);
+    quickSort(arr, pIndex + 1, end);
   }
-  let pIndex = partition(arr, start, end);
-  quickSort(arr, start, pIndex - 1);
-  quickSort(arr, pIndex + 1, end);
 
   return arr;
 };
 
-// console.log(quickSort(array, 0, array.length - 1));
+console.log(quickSort(array, 0, array.length - 1));
+console.log(quickSort(array2, 0, array2.length - 1));
