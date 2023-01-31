@@ -42,7 +42,7 @@ function deepClone(obj) {
   }, {});
 }
 
-//Option 3 with Deskriptor:
+//Option 3 deep obj copy with prototype:
 function clone(target, obj) {
   for (let key in obj) {
     let descriptor = Object.getOwnPropertyDescriptor(obj, key);
