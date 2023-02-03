@@ -70,11 +70,16 @@ function clone(target, obj) {
 // const apiClone = structuredClone(objForCopy);
 
 //results:
-const copy1 = deepObjCopy(objForCopy);
+const startTime = process.hrtime.bigint();
+// const copy1 = deepObjCopy(objForCopy);
 const copy2 = deepClone(objForCopy);
-const copy3 = clone({}, objForCopy);
-
-console.log('original', objForCopy);
-console.log('c1', copy1);
-console.log('c2', copy2);
-console.log('c3', copy3);
+// const copy3 = clone({}, objForCopy);
+const endTime = process.hrtime.bigint();
+const elapsedMs = Number(endTime - startTime) / 1e6;
+console.log(elapsedMs);
+console.log(startTime);
+console.log(endTime);
+// console.log('original', objForCopy);
+// console.log('c1', copy1);
+// console.log('c2', copy2);
+// console.log('c3', copy3);
