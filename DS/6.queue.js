@@ -4,22 +4,57 @@ class Node {
     this.next = null;
   }
 }
-// Useing LinkedList ds:
+
+//todo: Queue useing Singly Linked List with head and tail nodes:
+class QueueSll {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+  enqueue(val) {
+    let newNode = new Node(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    this.size += 1;
+    return this;
+  }
+  dequeue() {
+    if (!this.first) return null;
+    let temp = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size -= 1;
+    return temp.data;
+  }
+}
+
+const qSll = new QueueSll();
+qSll.enqueue(33).enqueue(55).enqueue(77);
+console.log('qSll', qSll);
+console.log(qSll.dequeue());
+console.log('qSll', qSll);
+
+//todo: Queue useing Singly Linked List with head and tail nodes:
 class Queue {
   constructor() {
     this.front = null;
     this.rear = null;
     this.length = 0;
   }
-
   size() {
     return this.length;
   }
-
   isEmpty() {
     return this.front === null && this.rear === null;
   }
-
   enqueue(value) {
     let newNode = new Node(value);
     if (this.isEmpty()) {
@@ -31,7 +66,6 @@ class Queue {
     this.length += 1;
     return this;
   }
-
   dequeue() {
     if (this.isEmpty()) {
       return null;
@@ -54,8 +88,7 @@ q.enqueue(1).enqueue(2).enqueue(3);
 // q.dequeue();
 console.log(q);
 
-// Useing array:
-
+//todo: Queue useing array:
 class Queue2 {
   constructor(capacity) {
     this.store = new Array(capacity);

@@ -4,22 +4,19 @@ class Node {
     this.next = null;
   }
 }
-// Stack using LinkedList:
+//todo:  Stack using Singly Linked List with tail nodes:
 class Stack {
   constructor(capacity) {
     this.root = null;
     this.length = capacity;
     this.n = 0;
   }
-
   isEmpty() {
     return this.n === 0;
   }
-
   size() {
     return this.n;
   }
-
   push(value) {
     if (this.n === this.length) {
       throw new Error('stack is full');
@@ -31,7 +28,6 @@ class Stack {
       return this;
     }
   }
-
   pop() {
     if (this.isEmpty()) {
       throw new Error('stack is empty');
@@ -51,6 +47,43 @@ s.push(1).push(2).push(3);
 // console.log(s.pop());
 console.log('stack', s);
 console.log(s.size());
+
+//todo: Stack - using singly linked list with head and tail nodes:
+class StackUsingList {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+  push(val) {
+    const newNode = new Node(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      let temp = this.first;
+      this.first = newNode;
+      this.first.next = temp;
+    }
+    this.size += 1;
+    return this;
+  }
+  pop() {
+    if (!this.first) return null;
+    let temp = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size -= 1;
+    return temp.data;
+  }
+}
+
+const stackL = new StackUsingList();
+stackL.push(33).push(55).push(77);
+console.log('pop', stackL.pop());
+console.log(stackL);
 
 //====================================================================================
 // Stack using array:

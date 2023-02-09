@@ -8,6 +8,7 @@ class Node {
   }
 }
 
+// Time complexity: insertion and removal in linked list is O(1)
 class LinkedList {
   constructor() {
     this.head = null;
