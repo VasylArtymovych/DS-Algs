@@ -11,7 +11,7 @@ const objForCopy = {
   r: { h: 9, a: 'test', s: 'test2' },
 };
 // recursive options:
-// option 1:
+//todo: option 1:
 function deepObjCopy(obj) {
   const newObj = {};
   for (let key in obj) {
@@ -25,7 +25,7 @@ function deepObjCopy(obj) {
   }
   return newObj;
 }
-// option 2:
+//todo: option 2:
 function deepClone(obj) {
   const keysArr = Object.keys(obj);
   return keysArr.reduce((clone, key) => {
@@ -42,7 +42,7 @@ function deepClone(obj) {
   }, {});
 }
 
-//Option 3 deep obj copy with prototype:
+//todo: Option 3 deep obj copy with prototype:
 function clone(target, obj) {
   for (let key in obj) {
     let descriptor = Object.getOwnPropertyDescriptor(obj, key);
@@ -65,8 +65,14 @@ function clone(target, obj) {
   Object.setPrototypeOf(target, prototype);
   return target;
 }
+//todo: option 4:
 
-//* option 4 Browser API:
+let copy4 = Object.create(
+  Object.getPrototypeOf(objForCopy),
+  Object.getOwnPropertyDescriptors(objForCopy)
+);
+
+//todo: option 5 Browser API:
 // const apiClone = structuredClone(objForCopy);
 
 //results:
@@ -77,9 +83,9 @@ const copy2 = deepClone(objForCopy);
 const endTime = process.hrtime.bigint();
 const elapsedMs = Number(endTime - startTime) / 1e6;
 console.log(elapsedMs);
-console.log(startTime);
-console.log(endTime);
+
 // console.log('original', objForCopy);
 // console.log('c1', copy1);
 // console.log('c2', copy2);
 // console.log('c3', copy3);
+// console.log('c4', copy4);
