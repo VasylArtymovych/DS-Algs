@@ -1,0 +1,22 @@
+- Auxiliary Space - is the extra space or temporary space used by an algorithm.
+- Space Complexity of an algorithm - is the total space taken by the algorithm with respect to the input size. Space complexity includes both Auxiliary space and space used by input.
+
+- Головне що треба розуміти: є EXTRA памʼять, а є загальна.
+  Саме тому для алгоритмів in-place, Тобто які тільки змінюють вхідні дані, кажуть що вони відразу О(1) по памʼяті. це правда, якщо ми рахуємо тільки Auxiliary Space , тобто додаткове.
+  тут важливо розуміти що таке Space Complexity: (1) це тільки auxiliary чи (2) input + auxiliary
+  Auxiliary Space is the extra space or temporary space used by an algorithm.
+  Space Complexity of an algorithm is the total space taken by the algorithm with respect to the input size. Space complexity includes both Auxiliary space and space used by input.
+  в загальному, рахують зазвичай додаткову памʼять, бо це більш логічно (як на мене) — якщо на вході вже є масив розміром N, значить він десь є в памʼяті, а тому це не те що потребує алгоритм для роботи.
+  тим не менш, в першій домашці я робив наголос саме на це в деяких задачах (наприклад, перша), враховуючи що для алгоритму там є рішення з теоретичним НЕ використанням масиву (запис суми в одну змінну). це не змінює РЕАЛЬНОЇ памʼяті, але теоретично значить що умовно алгоритм використовує лиш одну змінну щоб рахувати результат. в цьому і різниця.
+  загалом, саме цей edge кейс є досить цікавим в плані просторової асимптотики і викриває вже багато нюансів :slightly_smiling_face: саме на цьому я хочу наголосити, що є різні варіанти і треба розуміти ось цю різницю у використанні. при конкретно заданих умовах, наприклад “напишіть алгоритм для runningSum (задача 1) який працює in-placе” — то використання nums[i] += nums[i - 1]; не дасть вам auxiliary space. якщо ж треба алгоритм який отримує числа з потоку та повертає runningSum для кожного теж в поток — то вам прийдеться окремо десь запамʼятовувати елементи і це буде вже як раз додаткова памʼять.
+
+Рекурентність!
+Рекурентна формула!
+Arithmetic Sequence:
+a,a + d,a + 2d,a + 3d, ....,a + nd
+
+Closed Formula:
+an = a0 + d(n-1), n>=1;
+
+Recursive Formula:
+an = an-1 + d
