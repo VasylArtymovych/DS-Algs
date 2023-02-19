@@ -49,7 +49,7 @@
  * свої думки :)
  */
 
-// Time: O(n * m); Space: O(1);
+// Time: O(n^2); Space: O(1);
 const countStudentWhichCanNotEat = (students, sandwiches) => {
   while (students.length !== 0 && students.includes(sandwiches[0])) {
     if (students[0] === sandwiches[0]) {
@@ -62,6 +62,26 @@ const countStudentWhichCanNotEat = (students, sandwiches) => {
   return students.length;
 };
 
+//todo Optimazation:
+// Time: O(n); Space: O(1);
+const countStudentOptimized = (students, sandwiches) => {
+  const studentCounter = students.reduce(
+    (acc, student) => {
+      acc[student] += 1;
+      return acc;
+    },
+    [0, 0]
+  );
+
+  let j = 0;
+  while (j < sandwiches.length && studentCounter[sandwiches[j]] > 0) {
+    studentCounter[sandwiches[j]] -= 1;
+    j += 1;
+  }
+
+  return students.length - j;
+};
+
 console.log(countStudentWhichCanNotEat([1, 1, 0, 0], [0, 1, 0, 1])); // 0
 console.log(countStudentWhichCanNotEat([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1])); // 3
 console.log(countStudentWhichCanNotEat([1, 1, 1, 0, 0], [1, 1, 1, 1, 1])); // 2
@@ -69,3 +89,13 @@ console.log(countStudentWhichCanNotEat([1, 1, 1, 1, 1], [1, 1, 1, 1, 1])); // 0
 console.log(countStudentWhichCanNotEat([1, 1, 1, 1, 1], [0, 0, 0, 0, 0])); // 5
 console.log(countStudentWhichCanNotEat([0, 0, 0, 0, 0], [1, 1, 1, 1, 1])); // 5
 console.log(countStudentWhichCanNotEat([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1])); // 3
+console.log(countStudentWhichCanNotEat([1, 1, 0, 0], [0, 1, 0, 1])); // 0
+
+console.log(countStudentOptimized([1, 1, 0, 0], [0, 1, 0, 1])); // 0
+console.log(countStudentOptimized([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1])); // 3
+console.log(countStudentOptimized([1, 1, 1, 0, 0], [1, 1, 1, 1, 1])); // 2
+console.log(countStudentOptimized([1, 1, 1, 1, 1], [1, 1, 1, 1, 1])); // 0
+console.log(countStudentOptimized([1, 1, 1, 1, 1], [0, 0, 0, 0, 0])); // 5
+console.log(countStudentOptimized([0, 0, 0, 0, 0], [1, 1, 1, 1, 1])); // 5
+console.log(countStudentOptimized([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1])); // 3
+console.log(countStudentOptimized([1, 1, 0, 0], [0, 1, 0, 1])); // 0

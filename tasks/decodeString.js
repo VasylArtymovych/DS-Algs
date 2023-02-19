@@ -111,9 +111,70 @@ const decodeStrRec = (str, num = 1) => {
   return res;
 };
 
-console.log(decodeStrRec('3[a]2[bc]')); // "aaabcbc"
-console.log(decodeStrRec('3[a2[c]]')); // "accaccacc"
-console.log(decodeStrRec('2[abc]3[cd]ef')); // "abcabccdcdcdef"
-console.log(decodeStrRec('ro2[bot]dr4[e]ams')); // "robotbotdreeeeams"
-console.log(decodeStrRec('qwe2[asd3[w2[e]]]')); // "qweasdweeweeweeasdweeweewee"
-console.log(decodeStrRec('100[leetcode]')); //
+// console.log(decodeStrRec('3[a]2[bc]')); // "aaabcbc"
+// console.log(decodeStrRec('3[a2[c]]')); // "accaccacc"
+// console.log(decodeStrRec('2[abc]3[cd]ef')); // "abcabccdcdcdef"
+// console.log(decodeStrRec('ro2[bot]dr4[e]ams')); // "robotbotdreeeeams"
+// console.log(decodeStrRec('qwe2[asd3[w2[e]]]')); // "qweasdweeweeweeasdweeweewee"
+// console.log(decodeStrRec('100[leetcode]')); //
+
+//todo Recursieve optimized:
+// Time: O(n), it is linear despite different cases that might be in there
+// (e.g. a lot of repeats going deeper and deeper)
+// but in the end, we go over input only once
+const solve = (s) => {
+  const { result } = decodeStringRecursive(s, 0);
+  return result;
+};
+
+const decodeStringRecursive = (s, idx) => {
+  // we pass string itself, and index where we are currently
+  let resultStr = '';
+  let num = 0; // multiplier
+
+  // check if string has not finished yet
+  while (idx < s.length) {
+    const c = s[idx];
+    if (isDigit(c)) {
+      // if it is number -- it is multiplier of next group
+      // might consist of more than 1 digit, hence to formula
+      num = num * 10 + Number(c);
+      idx++; // move idx manually
+    } else if (c === '[') {
+      // new inner group starts, it is time to recurse
+      // we will get result as 2 pieces: [string, index]
+      const { result, index } = decodeStringRecursive(s, idx + 1);
+
+      // the result of inner group should be repeated num times
+      resultStr += result.repeat(num);
+      num = 0;
+
+      // move index to the new position we got from recursive calls
+      idx = index;
+    } else if (c === ']') {
+      // end of group, we should break the loop and form the final string to return
+      break;
+    } else {
+      // regular char -- just add to string
+      resultStr += c;
+      // and move index manually
+      idx++;
+    }
+  }
+
+  // we return [string, int] as the:
+  // 1. result string (from inner process)
+  // 2. index where we finished to proceed from next char
+  return { result: resultStr, index: idx + 1 };
+};
+
+const isDigit = (c) => {
+  return c >= '0' && c <= '9';
+};
+
+console.log(solve('3[a]2[bc]')); // "aaabcbc"
+console.log(solve('3[a2[c]]')); // "accaccacc"
+console.log(solve('2[abc]3[cd]ef')); // "abcabccdcdcdef"
+console.log(solve('ro2[bot]dr4[e]ams')); // "robotbotdreeeeams"
+console.log(solve('qwe2[asd3[w2[e]]]')); // "qweasdweeweeweeasdweeweewee"
+console.log(solve('100[leetcode]')); //
