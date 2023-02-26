@@ -38,6 +38,7 @@ const bubbleSortRecursive = (arr, n) => {
   // recur for remaining array
   bubbleSortRecursive(arr, n - 1);
 };
+
 /**
  * Оптимізація яка називається SHAKER_SORT
  * Алгоритм який полягає в порівнянні елементві і переміщенні елемента з
@@ -76,7 +77,6 @@ const shakerSort = (arr) => {
         swapped = true;
       }
     }
-
     // fix the first element
     left++;
   }

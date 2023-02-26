@@ -24,18 +24,17 @@ const n4 = makeNode(4, n3);
 const n5 = makeNode(5, n4);
 
 const nodes1 = [n1, n2, n3, n4, n5];
-n5.next = n2;
 
 const nodes2 = _.cloneDeep(nodes1);
-nodes2[4].next = null;
+nodes2[4].next = nodes2[1];
 
 const nodes3 = _.cloneDeep(nodes1);
-nodes3[1].next = n1;
+nodes3[3].next = nodes3[0];
 
 const nodes4 = _.cloneDeep(nodes1);
-nodes4[4].next = n4;
+nodes4[4].next = nodes4[3];
 
-const a1 = makeNode(10);
+const a1 = makeNode(6);
 
 const a2 = _.cloneDeep(a1);
 a2.next = a2;
