@@ -155,12 +155,14 @@ class BinarySearchTree {
     }
 
     function findRightMin(root) {
+      // return root.left === null ? root.data : findRightMin(root.left);
       let temp = root;
       while (temp.left !== null) {
         temp = temp.left;
       }
       return temp.data;
     }
+
     this.root = deleteNode(this.root, value);
     return this;
   }
@@ -172,3 +174,5 @@ bst.delete(150);
 console.log('bst', bst);
 bst.print();
 console.log('search', bst.search(500));
+
+//=============================================================================================================
