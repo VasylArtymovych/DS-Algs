@@ -9,8 +9,8 @@ const buildHeap = (arr, size) => {
 };
 
 const heapify = (arr, index, size) => {
-  const left = 2 * index + 1;
-  const right = left + 1;
+  const left = 2 * index + 1; // 2*index + 1
+  const right = left + 1; // or 2*index + 2
 
   let max = index;
 
@@ -31,7 +31,7 @@ const heapify = (arr, index, size) => {
 const deleteMax = (arr, size) => {
   [arr[0], arr[size]] = [arr[size], arr[0]];
 
-  document.write('Max => ' + arr[size] + '<br>');
+  // document.write('Max => ' + arr[size] + '<br>');
   arr.pop();
   heapify(arr, 0, arr.length - 1);
 };

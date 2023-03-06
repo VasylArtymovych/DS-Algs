@@ -20,9 +20,9 @@ const addEdge = (arr, src, dest) => {
 const printAdjMatrix = (arr) => {
   for (let i = 0; i < V; i += 1) {
     for (let j = 0; j < V; j += 1) {
-      document.write(arr[i][j] + '');
+      // document.write(arr[i][j] + '');
     }
-    document.write('<br/>');
+    // document.write('<br/>');
   }
 };
 
@@ -70,3 +70,11 @@ addEdgeUdg(udgAdjMatrix, 2, 3);
 addEdgeUdg(udgAdjMatrix, 3, 4);
 
 console.log(udgAdjMatrix);
+
+const g = [
+  [0, 1, 1, 1, 0],
+  [1, 0, 0, 1, 1],
+  [1, 0, 0, 1, 0],
+  [1, 1, 1, 0, 1],
+  [0, 1, 0, 1, 0],
+];
