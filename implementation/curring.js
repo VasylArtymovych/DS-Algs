@@ -40,3 +40,6 @@ function mult(a, b, c) {
 const curriedMult = curry(mult);
 console.log(curriedMult(1, 2, 3));
 console.log(curriedMult(1)(2)(3));
+
+const currWithFixFirstArg = curriedMult(3);
+console.log(currWithFixFirstArg(3)(3));

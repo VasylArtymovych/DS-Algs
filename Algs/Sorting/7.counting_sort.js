@@ -1,5 +1,3 @@
-const _ = require('lodash');
-
 const main = () => {
   let a = [8, 4, 2, 1, 4, 3, 87, 5, 6, 2, 5, 28, 2, 1, 1, 5];
 
@@ -34,12 +32,14 @@ const countSortSimple = (arr) => {
 
 // will work with negative numbers, but requires knowing min/max or finding them
 const countSort = (arr) => {
-  let max = _.max(arr);
-  let min = _.min(arr);
+  let max = Math.max(...arr);
+  let min = Math.min(...arr);
+
   let range = max - min + 1;
 
   const count = new Array(range).fill(0);
   const output = new Array(arr.length).fill(0);
+
   for (const a of arr) {
     count[a - min]++;
   }

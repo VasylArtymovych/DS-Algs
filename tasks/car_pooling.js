@@ -81,6 +81,40 @@ const carPooling2 = (capacity, trips) => {
   return true; // Accept only if all trip is safe
 };
 
+// this solution is more general, will work with bigger inputs
+// but it requires new array of size 2*N (each trip is added there as 2 objects)
+// and due to universal sort the time complexity is not linear
+
+// Time : O(n log n), Space: O(n)
+const carPooling3 = (capacity, trips) => {
+  const points = [];
+  for (let trip of trips) {
+    // pickup part, add passengers
+    points.push([trip[1], trip[0]]);
+
+    // dropoff part, remove passengers
+    points.push([trip[2], -trip[0]]);
+  }
+
+  // sort by location (point)
+  points.sort((o1, o2) => o1[0] - o2[0]);
+
+  let load = 0;
+  for (let point of points) {
+    // pickup point will have positive int
+    // dropoff point will have negative int
+    load += point[1];
+
+    // if at any point current load (number of passengers) will be
+    // more than capacity -- it is false
+    if (load > capacity) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 // Check results:
 console.log(
   carPooling(4, [
