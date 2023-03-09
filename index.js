@@ -54,4 +54,4 @@ for (let i = 0; i < 10000; i++) {
 
 // console.log(count);
 
-console.log(Math.sqrt(2));
+console.log(null == undefined);

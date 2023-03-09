@@ -65,10 +65,16 @@ function clone(target, obj) {
   Object.setPrototypeOf(target, prototype);
   return target;
 }
-//todo: option 4:
 
+//todo: option 4:
 let copy4 = Object.create(
   Object.getPrototypeOf(objForCopy),
+  Object.getOwnPropertyDescriptors(objForCopy)
+);
+
+//todo: option 5:
+let copy5 = Object.defineProperties(
+  {},
   Object.getOwnPropertyDescriptors(objForCopy)
 );
 
@@ -76,16 +82,18 @@ let copy4 = Object.create(
 // const apiClone = structuredClone(objForCopy);
 
 //results:
-const startTime = process.hrtime.bigint();
+// const startTime = process.hrtime.bigint();
 // const copy1 = deepObjCopy(objForCopy);
-const copy2 = deepClone(objForCopy);
+// const copy2 = deepClone(objForCopy);
 // const copy3 = clone({}, objForCopy);
-const endTime = process.hrtime.bigint();
-const elapsedMs = Number(endTime - startTime) / 1e6;
-console.log(elapsedMs);
+// const endTime = process.hrtime.bigint();
+// const elapsedMs = Number(endTime - startTime) / 1e6;
+// console.log(elapsedMs);
 
 // console.log('original', objForCopy);
 // console.log('c1', copy1);
 // console.log('c2', copy2);
 // console.log('c3', copy3);
-// console.log('c4', copy4);
+console.log('c4', copy4);
+console.log('c5', copy5);
+console.log(Object.getPrototypeOf(copy4));
